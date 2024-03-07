@@ -1,5 +1,4 @@
 <?php
-include 'utils/helpers.php';
 
 $heading = "About Page";
 
