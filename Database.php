@@ -15,10 +15,10 @@ class Database
         ]);
     }
 
-    public function query($sql, $params = [])
+    public function query($query, $params = [])
     {
-        $statement = $this->connection->prepare($sql);
+        $statement = $this->connection->prepare($query);
         $statement->execute($params);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement;
     }
 }
