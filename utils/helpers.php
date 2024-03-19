@@ -20,3 +20,10 @@ function abort($code)
     require "controllers/{$code}.php";
     die();
 }
+
+function authorize($condition, $status = Response::FORBIDDEN)
+{
+    if (! $condition) {
+        abort($status);
+    }
+}
