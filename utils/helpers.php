@@ -2,7 +2,7 @@
 
 use Core\Response;
 
-function dd($value)
+function dd($value): void
 {
     echo '<pre>';
         var_dump($value);
@@ -11,31 +11,35 @@ function dd($value)
     die();
 }
 
-function urlIs($url)
+function urlIs($url): bool
 {
     return $_SERVER["REQUEST_URI"] === $url;
 }
 
-function abort($code)
+function abort($code = 404)
 {
     http_response_code($code);
-    require "controllers/{$code}.php";
+
+    require base_path("views/{$code}.php");
+
     die();
 }
 
-function authorize($condition, $status = Response::FORBIDDEN)
+function authorize($condition, $status = Response::FORBIDDEN): bool
 {
     if (! $condition) {
         abort($status);
     }
+
+    return true;
 }
 
-function base_path($path)
+function base_path($path): string
 {
     return BASE_PATH . $path;
 }
 
-function view($path, $attributes = [])
+function view($path, $attributes = []): void
 {
     extract($attributes);
 
