@@ -1,8 +1,19 @@
 <?php
-require 'utils/helpers.php';
-require 'Database.php';
-require 'Response.php';
-require 'router.php';
+
+const BASE_PATH = __DIR__.'/../';
+
+require BASE_PATH.'utils/helpers.php';
+
+spl_autoload_register(function ($class) {
+    require base_path("Core/" . $class . '.php');
+});
+
+require base_path('Core/router.php');
+
+// require 'utils/helpers.php';
+// require 'Database.php';
+// require 'Response.php';
+// require 'router.php';
 
 // $config = require 'config.php';
 // $id = $_GET['id'] ?? 1;
